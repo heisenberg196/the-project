@@ -14,7 +14,9 @@
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
           <li><a class="nav-link scrollto" href="#about">About</a></li>
           <li><a class="nav-link scrollto" href="#services">Services</a></li>
-          <li><a class="nav-link scrollto" href="#portfolio">Portfolio</a></li>
+          {% if user.is_authenticated %}
+          <li><a class="nav-link scrollto" href="{% url 'edit-profile' %}">Profile</a></li>
+          {% endif %}
           <li><a class="nav-link scrollto" href="#team">Team</a></li>
           <li><a href="blog.html">Blog</a></li>
           <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
@@ -39,16 +41,19 @@
 
 
 
-          {% if request.path == '/login/' %}
-          <li><a class="getstarted scrollto" href="{% url 'signup' %}">Signup</a></li>
 
-      {% endif %}
+          {% if not user.is_authenticated  %}
       
-      {% if request.path == '/register/' %}
-      <li><a class="getstarted scrollto" href="{% url 'login' %}">Login</a></li>
+      {% if request.path == '/accounts/signup/' %}
+      <li><a class="getstarted scrollto" href="{% url 'account_login' %}">Login</a></li>
+        {% else %}
+        <li><a class="getstarted scrollto" href="{% url 'account_signup' %}">Signup</a></li>
 
       {% endif %}
-
+      {% endif %}
+      {% if user.is_authenticated  %}
+      <li><a class="getstarted scrollto" href="{% url 'account_logout' %}">Logout</a></li>
+      {% endif %}
 
 
 

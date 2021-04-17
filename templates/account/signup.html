@@ -1,0 +1,45 @@
+
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<link href="{% static 'css/homepage.css' %}" rel="stylesheet">
+    {% include 'Navbar.html'%}
+  
+
+  
+  <div class="content">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <img src="{% static 'images/undraw_remotely_2j6y.svg' %}" alt="Image" class="img-fluid">
+        </div>
+        <div class="col-md-6 contents">
+          <div class="row justify-content-center">
+            <div class="col-md-8">
+              <div class="mb-4">
+              <h3>Register</h3>
+              <!-- <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p> -->
+            </div>
+            <form  method="post">
+              {{ form.as_p }}
+              {% csrf_token %}
+              <input type="hidden" name="next" value="{{ next }}" />
+              <p><input type="submit" value="Signup"></p>
+            </form>
+            </div>
+          </div>
+          
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+  
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+{% endblock content %}
