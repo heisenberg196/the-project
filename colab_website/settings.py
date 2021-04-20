@@ -149,3 +149,10 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 ACCOUNT_AUTHENTICATION_METHOD="username_email"
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
+# STATIC_URL = '{}/{}/'.format(AWS_S3_ENDPOINT_URL, 'static')
+# STATIC_ROOT = 'static/'
+
+# MEDIA_URL = '{}/{}/'.format(AWS_S3_ENDPOINT_URL, 'media')
+# MEDIA_ROOT = 'media/'

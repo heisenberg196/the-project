@@ -34,7 +34,29 @@
     </div>
     <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
     <div class="card h-100">
-        <div class="card-body">
+    <form action="/profile/edit/" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    {{ profile_form.as_p }}
+   {% comment %} <br>
+    <label for="npc_skills">Skills: </label>
+    <ul id="skill-list">
+      <li>
+        <select form="npc_form" name="npc_skills">
+            <option value="skill_one">Skill 1</option>
+            <option value="skill_two">Skill 2</option>
+            <option value="skill_three">Skill 3</option>
+            <option value="skill_four">Skill 4</option>
+        </select>
+      </li>
+      <li id="add-skill-li">
+        <input type="button" value="Add Skill" onclick="addSkill();" id="add-skill">
+      </li>
+    </ul> {% endcomment %}
+
+    <input type="submit" value="Submit">
+</form>
+        {% comment %} <div class="card-body">
             <div class="row gutters">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                     <h6 class="mb-2 text-primary">Personal Details</h6>
@@ -101,9 +123,33 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> {% endcomment %}
     </div>
     </div>
     </div>
     </div>
+    <script>
+function confirm(event) {
+  // event.preventDefault();
+  document.getElementById("confirmation").style.display = "block";
+  return false;
+};
+{% comment %} 
+function addSkill() {
+
+  var newSkillField = document.createElement("LI");
+  selectNode = `
+            <select form="npc_form" name="npc_skills">
+            <option value="skill_one">Skill 1</option>
+            <option value="skill_two">Skill 2</option>
+            <option value="skill_three">Skill 3</option>
+            <option value="skill_four">Skill 4</option>
+        </select>
+    `;
+  newSkillField.innerHTML = selectNode;
+
+  var skill_list = document.getElementById("skill-list");
+  skill_list.insertBefore(newSkillField, document.getElementById("add-skill-li"));
+}
+</script> {% endcomment %}
 {% endblock content %}
