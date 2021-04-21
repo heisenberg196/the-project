@@ -30,8 +30,8 @@ class Skill(models.Model):
     )
     name = models.CharField(verbose_name="Skill Name", max_length=20)
     rating = models.CharField(verbose_name="Skill Rating", max_length=1, choices=Skill_Rating)
-    user = models.ForeignKey(
-        User, related_name='skills', on_delete=models.CASCADE, default=0)
+    # user = models.ForeignKey(
+    #     User, related_name='skills', on_delete=models.CASCADE, default=0)
     def __str__(self) -> str:
         return f'{self.name} - {self.rating}'
 
@@ -80,7 +80,7 @@ class Profile(models.Model):
     phone = models.CharField(max_length=14, blank=True, null=True)
     country = models.CharField(max_length=35, blank=True, null=True)
     city = models.CharField(max_length=35, blank=True, null=True)
-    skills = models.ManyToManyField(Skill, blank=True, null=True, default=def_skill)
+    skills = models.ManyToManyField(Skill, blank=True, null=True, default=def_skill, editable=True)
     # experience = models.ManyToManyField(Experience, blank=True, null=True)
 
     def __str__(self):

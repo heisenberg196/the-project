@@ -12,9 +12,9 @@ class Project(models.Model):
     # )
     project_name = models.CharField(max_length=90, verbose_name='Project Name')
     # rating = models.CharField(verbose_name="Skill Rating", max_length=1, choices=Skill_Rating)
-    description = models.CharField(max_length=320, verbose_name='Project Description')
+    description = models.CharField(max_length=320, verbose_name='Project Description', blank=True, null=True)
     
-    image = models.FileField(upload_to='images/', blank=True, null=True)
+    image = models.FileField(default='media/team-3.jpg', upload_to='images/')
     timestamp = models.DateTimeField(auto_now_add=True)
     tech_used = models.TextField()
     creator = models.ForeignKey(User, on_delete=models.CASCADE)

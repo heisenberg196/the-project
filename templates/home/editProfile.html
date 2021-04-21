@@ -38,6 +38,9 @@
     {% csrf_token %}
     {{ form.as_p }}
     {{ profile_form.as_p }}
+    {{ skill_form.as_p }}
+
+
    <br>
     <label for="npc_skills">Skills: </label>
     <ul id="skill-list">
@@ -47,7 +50,7 @@
       <li id="add-skill-li">
         <input type="button" value="Add Skill" onclick="addSkill();" id="add-skill">
       </li>
-    </ul> 
+    </ul>  
 
 
 
@@ -143,7 +146,7 @@ function confirm(event) {
 };
 function addSkill() {
 
-  var newSkillField = document.createElement("LI");
+  var newSkillField = document.createElement("P");
 //   selectNode = `
 //             <select form="npc_form" name="npc_skills">
 //             <option value="skill_one">Skill 1</option>
@@ -153,7 +156,14 @@ function addSkill() {
 //         </select>
 //     `;
 
-      selectNode = `<input type="text" placeholder="Add Skill" form="npc_form" name="npc_skills"  > `
+      selectNode = `<input type="text" placeholder="Add Skill" form="npc_form" name="npc_skills"  > 
+      <label> Skill Rating : </label>
+      <select name="rating" required > 
+        <option value selected> ------- </option>
+        <option value="B">Beginner</option>
+        <option value="I">Intermediate</option>
+        <option value="A">Advance</option> 
+        </select>`
   newSkillField.innerHTML = selectNode;
 
   var skill_list = document.getElementById("skill-list");

@@ -22,4 +22,4 @@ class ProfileForm(ModelForm):
 class SkillForm(ModelForm):
     class Meta:
         model = Skill
-        fields = '__all__'
+        fields = ('name', 'rating')
