@@ -34,26 +34,33 @@
     </div>
     <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
     <div class="card h-100">
-    <form action="/profile/edit/" method="post">
+    <form action="/profile/edit/" class="abc" method="post">
     {% csrf_token %}
     {{ form.as_p }}
     {{ profile_form.as_p }}
-   {% comment %} <br>
+   <br>
     <label for="npc_skills">Skills: </label>
     <ul id="skill-list">
       <li>
-        <select form="npc_form" name="npc_skills">
-            <option value="skill_one">Skill 1</option>
-            <option value="skill_two">Skill 2</option>
-            <option value="skill_three">Skill 3</option>
-            <option value="skill_four">Skill 4</option>
-        </select>
+        <input type="text" placeholder="Add Skill" form="npc_form" name="npc_skills"  id="add-skill">
       </li>
       <li id="add-skill-li">
         <input type="button" value="Add Skill" onclick="addSkill();" id="add-skill">
       </li>
-    </ul> {% endcomment %}
+    </ul> 
 
+
+
+
+    <!-- <select form="npc_form" name="npc_skills">
+        <option value="skill_one">Skill 1</option>
+        <option value="skill_two">Skill 2</option>
+        <option value="skill_three">Skill 3</option>
+        <option value="skill_four">Skill 4</option>
+    </select> -->
+
+
+    
     <input type="submit" value="Submit">
 </form>
         {% comment %} <div class="card-body">
@@ -134,22 +141,23 @@ function confirm(event) {
   document.getElementById("confirmation").style.display = "block";
   return false;
 };
-{% comment %} 
 function addSkill() {
 
   var newSkillField = document.createElement("LI");
-  selectNode = `
-            <select form="npc_form" name="npc_skills">
-            <option value="skill_one">Skill 1</option>
-            <option value="skill_two">Skill 2</option>
-            <option value="skill_three">Skill 3</option>
-            <option value="skill_four">Skill 4</option>
-        </select>
-    `;
+//   selectNode = `
+//             <select form="npc_form" name="npc_skills">
+//             <option value="skill_one">Skill 1</option>
+//             <option value="skill_two">Skill 2</option>
+//             <option value="skill_three">Skill 3</option>
+//             <option value="skill_four">Skill 4</option>
+//         </select>
+//     `;
+
+      selectNode = `<input type="text" placeholder="Add Skill" form="npc_form" name="npc_skills"  > `
   newSkillField.innerHTML = selectNode;
 
   var skill_list = document.getElementById("skill-list");
   skill_list.insertBefore(newSkillField, document.getElementById("add-skill-li"));
 }
-</script> {% endcomment %}
+</script>
 {% endblock content %}
