@@ -37,6 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
 
     'home',
     'project',
@@ -68,6 +73,14 @@ TEMPLATES = [
             ],
         },
     },
+]
+
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
 WSGI_APPLICATION = 'colab_website.wsgi.application'
@@ -124,3 +137,22 @@ STATICFILES_DIRS = [
     '/var/www/static/',
 ]
 STATIC_URL = '/static/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+SITE_ID = 1
+
+AUTH_PROFILE_MODULE = "home.Profile"
+ACCOUNT_LOGOUT_REDIRECT_URL ='/accounts/login/'
+LOGIN_REDIRECT_URL = '/profile2/'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+ACCOUNT_AUTHENTICATION_METHOD="username_email"
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
+# STATIC_URL = '{}/{}/'.format(AWS_S3_ENDPOINT_URL, 'static')
+# STATIC_ROOT = 'static/'
+
+# MEDIA_URL = '{}/{}/'.format(AWS_S3_ENDPOINT_URL, 'media')
+# MEDIA_ROOT = 'media/'

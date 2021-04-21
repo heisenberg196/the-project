@@ -11,8 +11,9 @@ class Project(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
     tech_used = models.TextField()
     creator = models.ForeignKey(User, on_delete=models.CASCADE)
-def __str__(self):
-    return "{title} by {creator}".format(title=self.project_name, creator=self.creator.first_name) 
+    def __str__(self):
+            return f'{self.project_name} by {self.creator}'
+
 
 
 
